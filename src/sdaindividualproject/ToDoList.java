@@ -1,5 +1,7 @@
 package sdaindividualproject;
 import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.Comparator;
 
 /** This class is where the arraylist of the actual to do list will be written. The methods from
  * the main class will ne accessing, printing, adding, modifying, and removing from this class.
@@ -8,6 +10,9 @@ import java.util.ArrayList;
  */
 public class ToDoList {
     private ArrayList<Task> toDoList = new ArrayList<>();
+    private static Scanner scanner = new Scanner(System.in);
+
+
 
     //toDoList is an arraylist of the object Task. However, the task object needs to
     //be converted to string so that other methods like addTask from main can access
@@ -28,10 +33,20 @@ public class ToDoList {
     public void printToDoList() {
 
         System.out.println("You have " + toDoList.size() + " tasks in your to do list");
-        for (int i = 0; i < toDoList.size(); i++) {
-            System.out.println((i) + ". " + toDoList.get(i));
+        System.out.println("\n How would you like to sort your list?");
+        System.out.println("\t Press 1 to choose by date ");
+        System.out.println( "\t Press 2 to choose by project");
+        int sortChoice = scanner.nextInt();
+             scanner.nextLine();
+             if(sortChoice == 1)  {
+                 sortByDate();} else if (sortChoice == 2){
+                 sortByProject(); } else {
+                 System.out.println("Please seletct a valid option");
+                 printToDoList();
+             }
+
         }
-    }
+
 
     public  boolean searchForTask(int searchTaskIndex) {
         for (int i = 0; i < toDoList.size(); i++) {
@@ -47,6 +62,12 @@ public class ToDoList {
     public void deleteTask(int position){
             toDoList.remove(position);
         }
+
+    //public static void sortByDate()
+    public void sortByProject(){
+            toDoList.sort((Task t1, Task t2)-> t1.getProject().compareTo(t2.project));
+
+             }
     }
 
 
