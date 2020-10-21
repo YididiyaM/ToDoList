@@ -34,4 +34,10 @@ public class MainTest {
 
     }
 
+   /* public  static void editTask()
+
+    public static void markAsDone()
+
+    public static void removeTask()*/
+
 }

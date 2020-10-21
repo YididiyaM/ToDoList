@@ -21,24 +21,32 @@ public class Main {
         boolean quit = false;
         int instructionChoice = 0;
 
-        printInstructions();
-        while (!quit) {
+        // to be removed
+        // Task t1 = new Task("task1", "project1", "todo", "2020-10-10");
+        // toDoList.addToDoList(t1);
+        // Task t2 = new Task("task2", "project2", "todo", "2020-06-06");
+        // toDoList.addToDoList(t2);
+        toDoList.readFromFile("done_list.txt");
+        if (toDoList.getSize() > 0){
+            toDoList.sortByDate();
+        }
 
+        while (!quit) {
+            printInstructions();
             instructionChoice = scanner.nextInt();
             scanner.nextLine();
-
-
             switch (instructionChoice) {
                 case 0:
                     printInstructions();
                     break;
                 case 1:
                     toDoList.printToDoList();
+                    break;
                 case 2:
                     addTask();
                     break;
                 case 3:
-                     editTask();
+                    editTask();
                     break;
                 case 4:
                     markAsDone();
@@ -90,24 +98,32 @@ public class Main {
         toDoList.addToDoList(t);
 
     }
+
     public  static void editTask() throws ParseException {
         toDoList.printToDoList();
         System.out.print("Please enter  the index of the task you want to edit: ");
-        int userInput = scanner.nextInt();
+        int userInput = Integer.parseInt(scanner.nextLine());
         if(toDoList.searchForTask(userInput)== true) {
+
             toDoList.deleteTask(userInput);
         };
         System.out.println("Please enter new task");
         addTask();
     }
+
     public static void markAsDone(){
-        System.out.println("Please enter which task you are done with");
-        int indexInput= scanner.nextInt();
-        toDoList.deleteTask(indexInput);
+        System.out.print("Please enter  the index of the task you want to mark as done: ");
+        int userInput = Integer.parseInt(scanner.nextLine());
+        toDoList.markAsDoneText(userInput);
+        toDoList.printToFile("done_list.txt");
+        toDoList.deleteTask(userInput);
     }
 
     public static void removeTask(){
-        markAsDone();
+        toDoList.printToDoList();
+        System.out.print("Please enter  the index of the task you want to edit: ");
+        int userInput = Integer.parseInt(scanner.nextLine());
+        toDoList.deleteTask(userInput);
     }
 
 }
