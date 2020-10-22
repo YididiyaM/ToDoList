@@ -26,7 +26,8 @@ public class ToDoList {
         return toDoList.size();
     }
 
-
+    //Although the to do list is an arraylist of tasks, it would be hard to iterate over
+    //without it being converted to a string. so this function does that first
     public void addToDoList(Task t) {
         toDoList.add(t);
     }
@@ -39,6 +40,7 @@ public class ToDoList {
 
         return listTitles;
     }
+
 
     public void printToDoList() {
 
@@ -62,7 +64,8 @@ public class ToDoList {
         }
     }
 
-
+        //Made a search method so the code for delete, mark as done would not be redundant
+        //In this case, they simply search for the index of task first
     public  boolean searchForTask(int searchTaskIndex) {
         for (int i = 0; i < toDoList.size(); i++) {
             if (i == searchTaskIndex) {
@@ -116,16 +119,18 @@ public class ToDoList {
                 Task task = toDoList.get(i);
                 if (task.status.equals("done")){
                     fw.write(String.format(format1, i, task.title, task.project,task.status, task.taskDate));
+                    FileWriter writer = new FileWriter("done_list.txt");
                 }
             }
             fw.close();
         } catch (IOException exception) {
-            System.out.println(" file cannot be write");
+            System.out.println(" file cannot be written");
         }
 
 
     }
-
+        //The printToDoList method got too long so made separate methods for sorting and
+        //called them inside the printToDoList
     public void sortByDate() {
         toDoList.sort((Task t1, Task t2)-> t1.getTaskDate().compareTo(t2.getTaskDate()));
         String format1 = "%-9s\t%-40s\t%-43s\t%-12s\t%-15s";

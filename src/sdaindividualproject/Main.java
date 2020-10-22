@@ -107,10 +107,10 @@ public class Main {
 
             toDoList.deleteTask(userInput);
         };
-        System.out.println("Please enter new task");
+        System.out.println("Please enter new task title, project, status and date");
         addTask();
     }
-
+        //take an int from scanner so
     public static void markAsDone(){
         System.out.print("Please enter  the index of the task you want to mark as done: ");
         int userInput = Integer.parseInt(scanner.nextLine());
@@ -121,7 +121,7 @@ public class Main {
 
     public static void removeTask(){
         toDoList.printToDoList();
-        System.out.print("Please enter  the index of the task you want to edit: ");
+        System.out.print("Please enter  the index of the task you want to delete: ");
         int userInput = Integer.parseInt(scanner.nextLine());
         toDoList.deleteTask(userInput);
     }

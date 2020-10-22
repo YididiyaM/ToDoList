@@ -30,6 +30,13 @@ public class TaskTest {
         assertEquals("Test Project", taskTest.getProject());
     }
 
+    @Test
+
+    void getTaskDate()
+    {
+        Task taskTest = new Task("Test","Test ","Open","2020-11-30")
+        assertEquals("2020-11-30", taskTest.getTaskDate)
+    }
 
 
 }

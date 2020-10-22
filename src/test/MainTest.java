@@ -3,23 +3,23 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sdaindividualproject.Task;
+
+
 
 public class MainTest {
     ArrayList<Task> toDoList = new ArrayList<>();
 
     @BeforeEach
 
-    void setup()
-    {
+    void setup(){
         Task task = new Task("Zero","Test Project","Half Way","2020-12-23");
         Task task1 = new Task("First","First Project","Started","2021-01-21");
         Task task2 = new Task("Second","Second Project","Finished","2020-11-23");
 
-        toDoList.add(task);
+        Main.addTask(task);
         toDoList.add(task1);
         toDoList.add(task2);
     }
@@ -34,10 +34,13 @@ public class MainTest {
 
     }
 
-   /* public  static void editTask()
+    @Test
 
-    public static void markAsDone()
+    void checkDelete()
+    {
+            toDoList.remove(2);
+            assertEquals(2,toDoList.size());
 
-    public static void removeTask()*/
+    }
 
 }
