@@ -18,16 +18,19 @@ public class ToDoList {
 
 
 
-    //toDoList is an arraylist of the object Task. However, the task object needs to
-    //be converted to string so that other methods like addTask from main can access
-    //it and add to it. This method is supposed to change said arraylist.
+    /**toDoList is an arraylist of the object Task. However, the task object needs to
+    *be converted to string so that other methods like addTask from main can access
+    *it and add to it. This method is supposed to change said arraylist.
+    */
 
     public int getSize() {
         return toDoList.size();
     }
 
-    //Although the to do list is an arraylist of tasks, it would be hard to iterate over
-    //without it being converted to a string. so this function does that first
+    /*Although the to do list is an arraylist of tasks, it would be hard to iterate over
+    **without it being converted to a string. so this function does that first
+    *@param Task
+    */
     public void addToDoList(Task t) {
         toDoList.add(t);
     }
@@ -64,8 +67,11 @@ public class ToDoList {
         }
     }
 
-        //Made a search method so the code for delete, mark as done would not be redundant
-        //In this case, they simply search for the index of task first
+        /*Made a search method so the code for delete, mark as done would not be redundant
+        *In this case, they simply search for the index of task first
+        * @Param int
+        * @return boolean
+        */
     public  boolean searchForTask(int searchTaskIndex) {
         for (int i = 0; i < toDoList.size(); i++) {
             if (i == searchTaskIndex) {
@@ -129,8 +135,9 @@ public class ToDoList {
 
 
     }
-        //The printToDoList method got too long so made separate methods for sorting and
-        //called them inside the printToDoList
+        /*The printToDoList method got too long so made separate methods for sorting and
+        *called them inside the printToDoList
+        */
     public void sortByDate() {
         toDoList.sort((Task t1, Task t2)-> t1.getTaskDate().compareTo(t2.getTaskDate()));
         String format1 = "%-9s\t%-40s\t%-43s\t%-12s\t%-15s";
