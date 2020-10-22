@@ -26,7 +26,6 @@ To-do-list requires [java] v8+ to run
 
 License
 ----
-
 Open source
 
 
